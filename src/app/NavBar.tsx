@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname} from "next/navigation"
-import {Container, Nav, Navbar} from "react-bootstrap"
+import {Container, Nav, NavDropdown, Navbar} from "react-bootstrap"
 
 export default function NavBar() {
     const pathname = usePathname();
@@ -10,13 +11,18 @@ export default function NavBar() {
     return(
         <Navbar bg = "primary" variant = "dark" sticky = "top" expand = "sm" collapseOnSelect>
             <Container>
-                <Navbar.Brand href="/">NextJS Image Gallery</Navbar.Brand>
+                <Navbar.Brand as={Link} href="/">NextJS Image Gallery</Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar"/>
                 <Navbar.Collapse id = "main-navbar">
                     <Nav>
-                        <Nav.Link href = "/static" active={ pathname === '/static' }>Static</Nav.Link>
-                        <Nav.Link href = "/dynamic" active={ pathname === '/dynamic' }>Dynamic</Nav.Link>
-                        <Nav.Link href = "/isr" active={ pathname === '/isr' }>ISR</Nav.Link>
+                        <Nav.Link as={Link} href = "/static" active={ pathname === '/static' }>Static</Nav.Link>
+                        <Nav.Link as={Link} href = "/dynamic" active={ pathname === '/dynamic' }>Dynamic</Nav.Link>
+                        <Nav.Link as={Link} href = "/isr" active={ pathname === '/isr' }>ISR</Nav.Link>
+                        <NavDropdown title = "Topics" id="topics-dropdown">
+                            <NavDropdown.Item as={Link} href="topics/health">Health</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} href="topics/fitness">Fitness</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} href="topics/coding">Coding</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

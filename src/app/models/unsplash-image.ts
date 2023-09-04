@@ -4,8 +4,12 @@ export interface UnsplashImage {
         username: string,
     },
     urls: {
-        raw: string
+        raw: string,
     },
     width: number,
     height: number,
+}
+
+export interface UnsplashSearchResponse {
+    results: UnsplashImage[],
 }
